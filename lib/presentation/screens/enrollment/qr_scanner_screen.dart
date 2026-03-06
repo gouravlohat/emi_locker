@@ -72,7 +72,7 @@ class _QrScannerScreenState extends State<QrScannerScreen> {
             child: SizedBox(
               width: scanBoxSize,
               height: scanBoxSize,
-              child: const Stack(
+              child: Stack(
                 children: [
                   _Corner(alignment: Alignment.topLeft),
                   _Corner(alignment: Alignment.topRight, flipX: true),
