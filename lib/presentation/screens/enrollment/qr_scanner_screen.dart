@@ -34,17 +34,18 @@ class _QrScannerScreenState extends State<QrScannerScreen> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         foregroundColor: Colors.white,
-        title: const Text('Scan QR Code'),
+        title: Text('Scan QR Code'),
         actions: [
           IconButton(
-            icon: Icon(_torchOn ? Icons.flash_off_rounded : Icons.flash_on_rounded),
+            icon: Icon(
+                _torchOn ? Icons.flash_off_rounded : Icons.flash_on_rounded),
             onPressed: () {
               setState(() => _torchOn = !_torchOn);
               _ctrl.toggleTorch();
             },
           ),
           IconButton(
-            icon: const Icon(Icons.flip_camera_ios_rounded),
+            icon: Icon(Icons.flip_camera_ios_rounded),
             onPressed: _ctrl.switchCamera,
           ),
         ],
@@ -76,7 +77,10 @@ class _QrScannerScreenState extends State<QrScannerScreen> {
                   _Corner(alignment: Alignment.topLeft),
                   _Corner(alignment: Alignment.topRight, flipX: true),
                   _Corner(alignment: Alignment.bottomLeft, flipY: true),
-                  _Corner(alignment: Alignment.bottomRight, flipX: true, flipY: true),
+                  _Corner(
+                      alignment: Alignment.bottomRight,
+                      flipX: true,
+                      flipY: true),
                 ],
               ),
             ).animate().fadeIn(duration: 500.ms),
@@ -90,7 +94,8 @@ class _QrScannerScreenState extends State<QrScannerScreen> {
             child: Column(
               children: [
                 Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                   decoration: BoxDecoration(
                     color: Colors.black.withValues(alpha: 0.5),
                     borderRadius: BorderRadius.circular(20),
@@ -178,7 +183,8 @@ class _ScanOverlayPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final center = Offset(size.width / 2, size.height / 2);
-    final rect = Rect.fromCenter(center: center, width: boxSize, height: boxSize);
+    final rect =
+        Rect.fromCenter(center: center, width: boxSize, height: boxSize);
 
     final bgPaint = Paint()..color = Colors.black.withValues(alpha: 0.55);
 
@@ -187,7 +193,8 @@ class _ScanOverlayPainter extends CustomPainter {
       Path.combine(
         PathOperation.difference,
         Path()..addRect(Offset.zero & size),
-        Path()..addRRect(RRect.fromRectAndRadius(rect, const Radius.circular(12))),
+        Path()
+          ..addRRect(RRect.fromRectAndRadius(rect, const Radius.circular(12))),
       ),
       bgPaint,
     );
